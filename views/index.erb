@@ -13,8 +13,10 @@
         <ul>
             <% @tasks.each do |task| %>
             <li>
-                <%= task[:name] %>
-                Due date: <%= task[:due_date] %>
+                <%= task[:name] %><% if overdue?(task[:due_date]) %>
+                <strong>(Overdue)</strong>
+                <% end %><br>
+                Due date: <%= task[:due_date] %><br>
                 <form action="/delete/<%= task[:id] %>" method="post">
                 <input type="submit" value="Delete Task">
                 </form>

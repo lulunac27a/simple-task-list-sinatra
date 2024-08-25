@@ -1,8 +1,13 @@
 require 'sinatra'
 require 'erb'
+require 'date'
 
 task_list = []
 id_counter = 1
+
+def overdue?(due_date)
+Date.parse(due_date) < Date.today
+end
 
 get '/' do
 @tasks = task_list
