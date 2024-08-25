@@ -11,6 +11,7 @@ end
 
 post '/add' do
 task_list << {id: id_counter, name: params[:task]}
+id_counter += 1
 redirect '/'
 end
 
