@@ -6,13 +6,15 @@
     <body>
         <h1>Task List</h1>
         <form action="/add" method="post">
-            Name: <input type="text" name="task" required>
+            Name: <input type="text" name="task" required><br>
+            Due date: <input type="date" name="due_date" required><br>
             <input type="submit">
         </form>
         <ul>
             <% @tasks.each do |task| %>
             <li>
                 <%= task[:name] %>
+                Due date: <%= task[:due_date] %>
                 <form action="/delete/<%= task[:id] %>" method="post">
                 <input type="submit" value="Delete Task">
                 </form>

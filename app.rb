@@ -10,7 +10,7 @@ erb :index
 end
 
 post '/add' do
-task_list << {id: id_counter, name: params[:task]}
+task_list << {id: id_counter, name: params[:task], due_date: params[:due_date]}
 id_counter += 1
 redirect '/'
 end
