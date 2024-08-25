@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Task List</title>
+    </head>
+    <body>
+        <h1>Task List</h1>
+        <form action="/add" method="post">
+            Name: <input type="text" name="task">
+            <input type="submit">
+        </form>
+        <ul>
+            <% @tasks.each do |task| %>
+            <li>
+                <%= task[:name] %>
+                <form action="/delete/<%= task[:id] %>" method="post">
+                <input type="submit" value="Delete Task">
+                </form>
+            </li>
+            <% end %>
+        </ul>
+    </body>
+</html>
