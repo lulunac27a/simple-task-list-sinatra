@@ -2,11 +2,10 @@ require 'sinatra'
 require 'erb'
 require 'date'
 
-
-
 class TaskList < Sinatra::Base
   task_list = []
   id_counter = 1
+
   def overdue?(due_date)
     Date.parse(due_date) < Date.today
   end
@@ -17,7 +16,7 @@ class TaskList < Sinatra::Base
   end
 
   post '/add' do
-    task_list << {id: id_counter, name: params[:task], due_date: params[:due_date]}
+    task_list << { id: id_counter, name: params[:task], due_date: params[:due_date] }
     id_counter += 1
     redirect '/'
   end
@@ -27,4 +26,5 @@ class TaskList < Sinatra::Base
     redirect '/'
   end
 end
+
 TaskList.run!

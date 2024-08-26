@@ -1,28 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Task List</title>
-    </head>
-    <body>
-        <h1>Task List</h1>
-        <form action="/add" method="post">
-            Name: <input type="text" name="task" required><br>
-            Due date: <input type="date" name="due_date" required><br>
-            <input type="submit">
-        </form>
-        <ul>
-            Number of tasks: <%= @tasks.length %><br>
-            <% @tasks.each do |task| %>
-            <li>
-                <%= task[:name] %><% if overdue?(task[:due_date]) %>
-                <strong>(Overdue)</strong>
-                <% end %><br>
-                Due date: <%= task[:due_date] %><br>
-                <form action="/delete/<%= task[:id] %>" method="post">
-                <input type="submit" value="Delete Task">
-                </form>
-            </li>
-            <% end %>
-        </ul>
-    </body>
+  <head>
+    <title>Task List</title>
+  </head>
+  <body>
+    <h1>Task List</h1>
+    <form action="/add" method="post">
+      Name: <input type="text" name="task" required><br>
+      Due date: <input type="date" name="due_date" required><br>
+      <input type="submit">
+    </form>
+    <ul>
+      Number of tasks: <%= @tasks.length %><br>
+      <% @tasks.each do |task| %>
+        <li>
+          <%= task[:name] %><% if overdue?(task[:due_date]) %>
+            <strong>(Overdue)</strong>
+          <% end %><br>
+          Due date: <%= task[:due_date] %><br>
+          <form action="/delete/<%= task[:id] %>" method="post">
+            <input type="submit" value="Delete Task">
+          </form>
+        </li>
+      <% end %>
+    </ul>
+  </body>
 </html>
