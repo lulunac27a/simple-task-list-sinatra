@@ -11,6 +11,7 @@
             <input type="submit">
         </form>
         <ul>
+            Number of tasks: <%= @tasks.length %><br>
             <% @tasks.each do |task| %>
             <li>
                 <%= task[:name] %><% if overdue?(task[:due_date]) %>
