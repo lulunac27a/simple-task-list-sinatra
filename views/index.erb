@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Task List</title>
-  </head>
-  <body>
-    <h1>Task List</h1>
-    <form action="/add" method="post"><%# form to add task to task list %>
-      Name: <input type="text" name="task" required><br>
-      <%# all fields are required to add a task %>
-      Due date: <input type="date" name="due_date" required><br>
-      <input type="submit">
-    </form>
-    <ul>
-      Number of tasks: <%= @tasks.length %><%# get number of tasks in task list %><br>
-      <% @tasks.each do |task| %><%# repeat for each task%>
-        <li>
-          <%= task[:name] %><% if overdue?(task[:due_date]) %><%# check if task is overdue %>
-            <strong>(Overdue)</strong>
-          <% end %><br>
-          Due date: <%= task[:due_date] %><br>
-          <form action="/delete/<%= task[:id] %>" method="post"><%# form to delete task from task list from task id %>
-            <input type="submit" value="Delete Task">
-          </form>
-        </li>
-      <% end %>
-    </ul>
-  </body>
+    <head>
+        <title>Task List</title>
+    </head>
+    <body>
+        <h1>Task List</h1>
+        <form action="/add" method="post"><!--form that use post method to add task to task list-->
+            Name: <input type="text" name="task" required><br>
+            Due date: <input type="date" name="due_date" required><br>
+            <input type="submit">
+        </form>
+        <ul>
+            Number of tasks: <%= @tasks.length %><br>
+            <% @tasks.each do |task| %><!--repeat for each task in task list-->
+                <li>
+                    <%= task[:name] %><% if overdue?(task[:due_date]) %><!--check if task is overdue-->
+                        <strong>(Overdue)</strong>
+                    <% end %><br>
+                    Due date: <%= task[:due_date] %><br>
+                    <form action="/delete/<%= task[:id] %>" method="post">
+                        <input type="submit" value="Delete Task">
+                    </form>
+                </li>
+            <% end %>
+        </ul>
+    </body>
 </html>
